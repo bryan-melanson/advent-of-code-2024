@@ -10,10 +10,10 @@ fn row_to_vec(data: String) -> Vec<Vec<i32>> {
 
 fn abs_diff_safe(a: i32, b: i32) -> bool {
     let diff = a.abs_diff(b);
-    diff >= 1 && diff <= 3
+    (1..=3).contains(&diff)
 }
 
-fn is_row_safe(row: &Vec<i32>) -> bool {
+fn is_row_safe(row: &[i32]) -> bool {
     let mut increasing = true;
     let mut decreasing = true;
 
@@ -26,7 +26,6 @@ fn is_row_safe(row: &Vec<i32>) -> bool {
         } else if row[i] <= row[i - 1] {
             increasing = false;
         } else {
-            // Equal elements break strict ordering
             return false;
         }
     }
